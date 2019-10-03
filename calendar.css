@@ -1,0 +1,74 @@
+/*
+  Sets properties for header with Month and Year
+*/
+
+h1 {
+  text-align: center;
+  display:inline;
+}
+
+/*
+  Sets properties grid containing calendar, and days actually within the month
+*/
+
+.grid-container {
+  display: grid;
+  grid-template-columns: auto auto auto auto auto auto auto;
+  /* grid-template-rows: auto auto auto auto auto auto auto; */
+	grid-gap: 0px;
+  grid-auto-rows: minmax(75px, auto);
+  grid-auto-columns: minmax(auto, auto);
+}
+
+.grid-item {
+  border-top: 1px solid #000;
+  border-left: 1px solid #000;
+  border-right: 1px solid #000;
+  border-bottom: 1px solid #000;
+}
+
+.day-container {
+  display: grid;
+  text-align: center;
+  grid-template-columns: auto auto auto auto auto auto auto;
+	grid-gap: 0px;
+  grid-auto-rows: minmax(20px, auto);
+  grid-auto-columns: minmax(100px, auto);
+}
+
+.day-item {
+  text-align: center;
+  border-top: 1px solid #000;
+  border-left: 1px solid #000;
+  border-right: 1px solid #000;
+  border-bottom: 1px solid #000;
+  height: 75px;
+}
+
+/*
+  Sets properties for days seen but not in that month
+*/
+.grid-item1 {
+  background-color: gray;
+  border-top: 1px solid #000;
+  border-left: 1px solid #000;
+  border-right: 1px solid #000;
+  border-bottom: 1px solid #000;
+
+}
+/*
+  Sets alignment of buttons
+*/
+.prev{
+float:left;
+}
+
+.next{
+  float:right;
+}
+/*
+  Sets initial background color
+*/
+body {
+  background-color: lightblue;
+}

@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="calendar.css">
+    <title>Calendar</title>
+  </head>
+  <!--
+  Sign In and Sign Up Inputs
+  -->
+  <body id=daBod>
+    Username: <input type="text" id= "username"  name="username"/>
+    Password: <input type="text" id= "password" name="password"/>
+    <input type="submit" id="login" value="Sign In"/>
+    <p>Or sign up as a new user!</p>
+    Username: <input type="text" id= "newUser" name="newUser"/>
+    Password: <input type="text" id= "newPass"  name="newPass"/> 
+    <input type="submit" id="register" value="Sign Up"/><br>
+    <p id="message">Welcome!</p>
+    <p id="account">Logged in as: Unregistered user</p>
+    <input type="submit" id="logout" value="Logout"/>
+    <!--
+    Event Input including text for name and drop downs for date and time
+    -->
+    <p>Add an event to your calender:</p>
+    Event: <input type="text" id= "plan"  name="plan"/> 
+
+    <select id = "pickMon">
+      <option value="January">January</option>
+      <option value="February">February</option>
+      <option value="March">March</option>
+      <option value="April">April</option>
+      <option value="May">May</option>
+      <option value="June">June</option>
+      <option value="July">July</option>
+      <option value="August">August</option>
+      <option value="September">September</option>
+      <option value="October">October</option>
+      <option value="November">November</option>
+      <option value="December">December</option>
+    </select>
+    <select id = "pickDay">
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+      <option value="6">6</option>
+      <option value="7">7</option>
+      <option value="8">8</option>
+      <option value="9">9</option>
+      <option value="10">10</option>
+      <option value="11">11</option>
+      <option value="12">12</option>
+      <option value="13">13</option>
+      <option value="14">14</option>
+      <option value="15">15</option>
+      <option value="16">16</option>
+      <option value="17">17</option>
+      <option value="18">18</option>
+      <option value="19">19</option>
+      <option value="20">20</option>
+      <option value="21">21</option>
+      <option value="22">22</option>
+      <option value="23">23</option>
+      <option value="24">24</option>
+      <option value="25">25</option>
+      <option value="26">26</option>
+      <option value="27">27</option>
+      <option value="28">28</option>
+      <option value="29">29</option>
+      <option value="30">30</option>
+      <option value="31">31</option>
+    </select>
+    <select id = "pickYear">
+      <option value="2019">2019</option>
+      <option value="2020">2020</option>
+      <option value="2021">2021</option>
+      <option value="2022">2022</option>
+      <option value="2023">2023</option>
+      <option value="2024">2024</option>
+      <option value="2025">2025</option>
+      <option value="2026">2026</option>
+      <option value="2027">2027</option>
+      <option value="2028">2028</option>
+      <option value="2029">2029</option>
+      <option value="2030">2030</option>
+      <option value="2031">2031</option>
+      <option value="2032">2032</option>
+    </select>
+    <select id = "pickHour">
+      <option value="0">0</option>
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+      <option value="6">6</option>
+      <option value="7">7</option>
+      <option value="8">8</option>
+      <option value="9">9</option>
+      <option value="10">10</option>
+      <option value="11">11</option>
+      <option value="12">12</option>
+      <option value="13">13</option>
+      <option value="14">14</option>
+      <option value="15">15</option>
+      <option value="16">16</option>
+      <option value="17">17</option>
+      <option value="18">18</option>
+      <option value="19">19</option>
+      <option value="20">20</option>
+      <option value="21">21</option>
+      <option value="22">22</option>
+      <option value="23">23</option>
+    </select>
+:
+    <select id = "pickMin">
+      <option value="00">00</option>
+      <option value="05">05</option>
+      <option value="10">10</option>
+      <option value="15">15</option>
+      <option value="20">20</option>
+      <option value="25">25</option>
+      <option value="30">30</option>
+      <option value="35">35</option>
+      <option value="40">40</option>
+      <option value="45">45</option>
+      <option value="50">50</option>
+      <option value="55">55</option>
+    </select>
+    Category:
+    <select id = "pickCategory">
+      <option value="Other">Other</option>
+      <option value="School">School</option>
+      <option value="Work">Work</option>
+      <option value="Family">Family</option>
+      <option value="Sports">Sports</option>
+      <option value="Holidays">Holidays</option>
+
+    </select><br>
+    <input type="submit" id="add" value="Add To Calendar"/>
+    <!--
+    Creative Portion: Category Filtering
+    -->
+    <p id="addPlan"></p>
+    <input type="checkbox" name="categoryChoice" id="other" checked>Other
+    <input type="checkbox" name="categoryChoice" id="school" checked>School
+    <input type="checkbox" name="categoryChoice" id="work" checked>Work
+    <input type="checkbox" name="categoryChoice" id="family" checked>Family
+    <input type="checkbox" name="categoryChoice" id="sports" checked>Sports
+    <input type="checkbox" name="categoryChoice" id="holidays" checked>Holidays<br>
+    <!--
+    Month and Year at top of calendar
+    -->
+        <h1 id ="monthName"> March</h1>
+        <h1 id = "yearName"> 2019</h1>
+        <!--
+        Creative Portion: Select a month and year and go there without clicking ahead or behind
+        -->
+        <select id = "goToMon">
+          <option value="January">January</option>
+          <option value="February">February</option>
+          <option value="March">March</option>
+          <option value="April">April</option>
+          <option value="May">May</option>
+          <option value="June">June</option>
+          <option value="July">July</option>
+          <option value="August">August</option>
+          <option value="September">September</option>
+          <option value="October">October</option>
+          <option value="November">November</option>
+          <option value="December">December</option>
+        </select>
+        <select id = "goToYear">
+          <option value="2019">2019</option>
+          <option value="2020">2020</option>
+          <option value="2021">2021</option>
+          <option value="2022">2022</option>
+          <option value="2023">2023</option>
+          <option value="2024">2024</option>
+          <option value="2025">2025</option>
+          <option value="2026">2026</option>
+          <option value="2027">2027</option>
+          <option value="2028">2028</option>
+          <option value="2029">2029</option>
+          <option value="2030">2030</option>
+          <option value="2031">2031</option>
+          <option value="2032">2032</option>
+        </select>
+        <input type="submit" id="goTo" value="Go to Month/Year"/>
+        <!--
+        Creative Portion: Choose Background Color
+        -->
+        <select id = "color">
+          <option value="lightblue">Blue</option>
+          <option value="goldenrod">Gold</option>
+          <option value="silver">Silver</option>
+          <option value="white">White</option>
+          <option value="orange">Orange</option>
+        </select>
+        <input type="submit" id="changeColor" value="Change Background Color"/>
+        <!--
+        Grid set up for calendar with days at top and 37 possible grid boxes
+        -->
+        <div class="grid-container">
+        <div class="day-item" id="sun">Sunday</div>
+      <div class="day-item" id="mon">Monday</div>
+      <div class="day-item" id="tues">Tuesday</div>
+      <div class="day-item" id="wed">Wednesday</div>
+      <div class="day-item" id="thurs">Thursday</div>
+      <div class="day-item" id="fri">Friday</div>
+      <div class="day-item" id="sat">Saturday</div>
+      <div class="grid-item" id="1"></div>
+      <div class="grid-item" id="2"></div>
+      <div class="grid-item" id="3"></div>
+      <div class="grid-item" id="4"></div>
+      <div class="grid-item" id="5"></div>
+      <div class="grid-item" id="6"></div>
+      <div class="grid-item" id="7"></div>
+      <div class="grid-item" id="8"></div>
+      <div class="grid-item" id="9"></div>
+      <div class="grid-item" id="10"></div>
+      <div class="grid-item" id="11"></div>
+      <div class="grid-item" id="12"></div>
+      <div class="grid-item" id="13"></div>
+      <div class="grid-item" id="14"></div>
+      <div class="grid-item" id="15"></div>
+      <div class="grid-item" id="16"></div>
+      <div class="grid-item" id="17"></div>
+      <div class="grid-item" id="18"></div>
+      <div class="grid-item" id="19"></div>
+      <div class="grid-item" id="20"></div>
+      <div class="grid-item" id="21"></div>
+      <div class="grid-item" id="22"></div>
+      <div class="grid-item" id="23"></div>
+      <div class="grid-item" id="24"></div>
+      <div class="grid-item" id="25"></div>
+      <div class="grid-item" id="26"></div>
+      <div class="grid-item" id="27"></div>
+      <div class="grid-item" id="28"></div>
+      <div class="grid-item" id="29"></div>
+      <div class="grid-item" id="30"></div>
+      <div class="grid-item" id="31"></div>
+      <div class="grid-item" id="32"></div>
+      <div class="grid-item" id="33"></div>
+      <div class="grid-item" id="34"></div>
+      <div class="grid-item" id="35"></div>
+      <div class="grid-item" id="36"></div>
+      <div class="grid-item" id="37"></div>
+    </div>
+    <!--
+    Next and Previous month buttons
+    -->
+      <input type="submit" class = "prev" value="Previous Month" id="prevMon"/>
+      <input type="submit" class="next" value="Next Month" id="nextMon"/>
+      <script>
+      //Event Listeners for html buttons
+        document.getElementById('login').addEventListener('click',logIn, false);
+        document.getElementById('register').addEventListener('click',register, false);
+        document.getElementById('logout').addEventListener('click',logout, false);
+        document.getElementById('add').addEventListener('click',addEvent, false);
+        document.getElementById('other').addEventListener('click',loadCalendar, false);
+        document.getElementById('work').addEventListener('click',loadCalendar, false);
+        document.getElementById('school').addEventListener('click',loadCalendar, false);
+        document.getElementById('family').addEventListener('click',loadCalendar, false);
+        document.getElementById('sports').addEventListener('click',loadCalendar, false);
+        document.getElementById('goTo').addEventListener('click',goToMonthYear, false);
+        document.getElementById('changeColor').addEventListener('click',colorChange, false);
+
+        //Calendar timing provided by module
+        (function(){
+          Date.prototype.deltaDays=function(c){
+            return new Date(this.getFullYear(),this.getMonth(),this.getDate()+c)
+          };
+          Date.prototype.getSunday=function(){
+            return this.deltaDays(-1*this.getDay())
+          }
+          }());
+          function Week(c){
+            this.sunday=c.getSunday();
+            this.nextWeek=function(){
+              return new Week(this.sunday.deltaDays(7))
+            };
+            this.prevWeek=function(){
+              return new Week(this.sunday.deltaDays(-7))
+            };
+            this.contains=function(b){
+              return this.sunday.valueOf()===b.getSunday().valueOf()};
+              this.getDates=function(){
+                for(var b=[],a=0;7>a;a++)b.push(this.sunday.deltaDays(a));
+                return b
+              };
+            }
+          function Month(c,b){
+            this.year=c;this.month=b;
+            this.nextMonth=function(){
+              return new Month(c+Math.floor((b+1)/12),(b+1)%12)
+            };this.prevMonth=function(){
+              return new Month(c+Math.floor((b-1)/12),(b+11)%12)
+            };this.getDateObject=function(a){
+              return new Date(this.year,this.month,a)
+            };this.getWeeks=function(){
+              var a=this.getDateObject(1),b=this.nextMonth().getDateObject(0),c=[],a=new Week(a);
+              for(c.push(a);!a.contains(b);)a=a.nextWeek(),c.push(a);
+              return c
+            };
+          }
+          let month = 0;
+          let year = 0;
+          //Creative Portion: Function to load a new month (any month of any year)
+          function goToMonthYear () {
+            month = checkMonth(document.getElementById("goToMon").value);
+            year = document.getElementById("goToYear").value;
+            document.getElementById("monthName").innerHTML = document.getElementById("goToMon").value;
+            document.getElementById("yearName").innerHTML = document.getElementById("goToYear").value;
+            fetch("loadCalendar.php", {
+              method: 'POST',
+              headers: { 'content-type': 'application/json' }
+            })
+            .then(response => (response.json()))
+            .then((data) => {
+              if(data.success){
+                console.log(data.events);
+                updateCalendar(data.events);
+              }
+            })//.catch((err) => console.error(err));
+          }
+          //Called whenever the calendar loads to get the events
+          function loadCalendar() {
+            fetch("loadCalendar.php", {
+              method: 'POST',
+              headers: { 'content-type': 'application/json' }
+            })
+            .then(response => (response.json()))
+            .then((data) => {
+              if(data.success){
+                console.log(data.events);
+                updateCalendar(data.events);
+              }
+            })//.catch((err) => console.error(err));
+          }
+          //Changes background color
+          function colorChange() {
+            document.getElementById("daBod").style.backgroundColor = document.getElementById("color").value;
+          }
+          let theToken = 0;
+          //Loaded only once when page loads to initialize date to
+          //current month and year and sets header to those values
+          function startCal() {
+            let num = new Date();
+            let date = num.getDate();
+             month = num.getMonth();
+             year = num.getFullYear();
+            let currentMonth = new Month(year, month);
+            document.getElementById("monthName").innerHTML = (months[currentMonth.month]);
+            document.getElementById("yearName").innerHTML = (currentMonth.year);
+             loadCalendar();
+          }
+          //Ensures startCal() runs at beginning and since page is not reloaded, it doesn't run again
+          document.addEventListener("DOMContentLoaded", startCal);
+
+          const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+          //takes a month string and goes through month array to find the index of the month
+        function checkMonth(m){
+          for (i=0; i<12; ++i){
+            if (m===months[i]){
+              return i;
+            }
+          }
+        }
+        //eventListener with function to switch to next month
+          document.getElementById("nextMon").addEventListener("click", function(event){
+          let currentMonth = new Month(parseInt(document.getElementById("yearName").innerHTML), checkMonth(document.getElementById("monthName").innerHTML));
+          currentMonth = currentMonth.nextMonth();
+          month = currentMonth.month;
+          year = currentMonth.year;
+  	      loadCalendar();
+         }, false);
+         //eventListener with function to switch to previous month
+         document.getElementById("prevMon").addEventListener("click", function(event){
+         let currentMonth = new Month(parseInt(document.getElementById("yearName").innerHTML), checkMonth(document.getElementById("monthName").innerHTML));
+         currentMonth = currentMonth.prevMonth();
+         month = currentMonth.month;
+         year = currentMonth.year;
+   	      loadCalendar();
+          }, false);
+
+          //called each time a month loads (called by loadCalendar())
+          //this function takes in all events and determines which days
+          //in the weeks associated with that month are actually in that month
+          //those days are populated with incrementing numbers and events if they
+          //exist on that day. other grid boxes are grayed out because they are
+          //not part of the month
+         function updateCalendar(events){
+           for (i=1; i<38; ++i){
+             document.getElementById(i).innerHTML = "";
+             document.getElementById(i).className = 'grid-item';
+           }
+           document.getElementById("monthName").innerHTML = (months[month]);
+           document.getElementById("yearName").innerHTML = (year);
+           let currentMonth = new Month(year, month);
+           var weeks = currentMonth.getWeeks();
+           let week = 0;
+           let proof = -1;
+           let outterCheck = 0;
+           const arr = new Array(events.length);
+              for(var w in weeks){
+                  var days = weeks[w].getDates();
+                   let check = week+1;
+                  for(var d in days){
+                     console.log(days[d].toISOString());
+                     if (days[d].getMonth()==month){
+                       if (proof==-1){
+                         proof = check;
+                       }
+                       const actDay = (check-proof+1);
+                       let daySquare = document.getElementById(check);
+                       let viewDayId = 'viewDay'+actDay;
+                       let viewDayButton = document.createElement("button");
+                       viewDayButton.setAttribute('id', viewDayId);
+                       viewDayButton.appendChild(document.createTextNode('View Day'));
+                       daySquare.appendChild(document.createTextNode(actDay));
+                       daySquare.appendChild(viewDayButton);
+                       daySquare.appendChild(document.createTextNode('\n'));
+                       document.getElementById(viewDayId).addEventListener('click',function(e){
+                         viewDay(viewDayId,month,events);
+                       }, false);
+                       for (let i=0; i<events.length; i++){
+                         if (events[i].month==month && events[i].year==year && events[i].day==(check-proof+1)){
+                           //following if statement checks to see which categories of events are being filtered in/out
+                           if((document.getElementById("other").checked && events[i].category=='Other') ||
+                         (document.getElementById("family").checked && events[i].category=='Family') ||
+                       (document.getElementById("sports").checked && events[i].category=='Sports') ||
+                     (document.getElementById("work").checked && events[i].category=='Work') ||
+                   (document.getElementById("school").checked && events[i].category=='School')
+                   ||(document.getElementById("holidays").checked && events[i].category=='Holidays')) {
+                           let eventString = events[i].title.substring(0,4) + "… at " + events[i].hour + ":" + events[i].minute;
+                           let viewButton = document.createElement("button");
+                           let eventThing = document.createElement('div');
+
+                           viewButton.setAttribute('id', 'view' + events[i].id);
+                           viewButton.appendChild(document.createTextNode('V'));
+                           eventThing.appendChild(document.createTextNode(eventString));
+                           eventThing.appendChild(viewButton);
+                           let viewId = 'view'+events[i].id;
+
+                           let delButton = document.createElement("button");
+                           delButton.setAttribute('id', 'delete' + events[i].id);
+                           delButton.appendChild(document.createTextNode('D'));
+                           eventThing.appendChild(delButton);
+                           let delId = 'delete'+events[i].id;
+
+                           let editButton = document.createElement("button");
+                           editButton.setAttribute('id', 'edit' + events[i].id);
+                           editButton.appendChild(document.createTextNode('E'));
+                           eventThing.appendChild(editButton);
+                           let editId = 'edit'+events[i].id;
+
+                           daySquare.appendChild(eventThing);
+                           document.getElementById(viewId).addEventListener('click',function(e){
+                             viewEvent(viewId,events);
+                           });
+                           document.getElementById(editId).addEventListener('click',function(e){
+                             editEvent(editId,events);
+                           });
+                           document.getElementById(delId).addEventListener('click',function(e){
+                             deleteEvent(delId,events);
+                           });
+                         }
+                       }
+                     }
+                   }
+                   else{
+                   }
+                     check++;
+                     outterCheck=check;
+                  }
+                  week+=7;
+              }
+              //changes class of grid boxes after month ends so they are grayed out
+              for (let i=outterCheck; i<38; ++i){
+                document.getElementById(i).className = "grid-item1";
+              }
+          }
+          //login function with CSRF tokens
+          function logIn() {
+              const username = document.getElementById("username").value;
+              const password = document.getElementById("password").value;
+              const data = { 'username': username, 'password': password };
+              fetch("login_ajax.php", {
+                method: 'POST',
+                body: JSON.stringify(data),
+                headers: { 'content-type': 'application/json' }
+              })
+              .then(response => response.json())
+              .then(data => {
+                if(data.success) {
+                  document.getElementById('account').innerHTML= "You are logged in as: " + username;
+                  document.getElementById('message').innerHTML= (data.success ? "Log in successful!" : `You were not logged in. ${data.message}`);
+                  theToken = data.tokens;
+                  loadCalendar();
+                } else {
+                  document.getElementById('message').innerHTML= (data.success ? "You've been logged in!" : `You were not logged in. ${data.message}`);
+                }
+              })
+          }
+          //registr function with CSRF tokens
+          function register() {
+            const username = document.getElementById("newUser").value;
+            const password = document.getElementById("newPass").value;
+            const data = { 'username': username, 'password': password };
+            fetch("register_ajax.php", {
+              method: 'POST',
+              body: JSON.stringify(data),
+              headers: { 'content-type': 'application/json' }
+            })
+            .then(response => response.json())
+            .then(data => {
+              if(data.success) {
+                document.getElementById('account').innerHTML= "You are logged in as: " + username;
+                document.getElementById('message').innerHTML= (data.success ? "Your account has been registered!" : `Your account was not registered. ${data.message}`);
+                theToken = data.tokens;
+                loadCalendar();
+              } else {
+                document.getElementById('message').innerHTML= (data.success ? "Your account has been registered!" : `Your account was not registered. ${data.message}`);
+              }
+            })
+        }
+        //logout function
+          function logout() {
+            fetch("logout.php", {
+              method: 'POST',
+            })
+            document.getElementById('message').innerHTML= "Welcome!";
+            document.getElementById('account').innerHTML="Logged in as: Unregistered user";
+            console.log('You were logged out.');
+            loadCalendar();
+          }
+          //add Event function takes the fields populated by user and sends them to php script
+          function addEvent() {
+            const day = document.getElementById("pickDay").value;
+            const monthz = checkMonth(document.getElementById("pickMon").value);
+            const years = document.getElementById("pickYear").value;
+            const hour = document.getElementById("pickHour").value;
+            const minute = document.getElementById("pickMin").value;
+            const plan = document.getElementById("plan").value;
+            const category = document.getElementById("pickCategory").value;
+            const data = { 'day': day, 'months': monthz, 'years': years, 'plan': plan, 'hour': hour , 'minute': minute, 'category': category};
+            fetch("addEvent.php", {
+              method: 'POST',
+              body: JSON.stringify(data),
+              headers: {'content-type': 'application/json'}
+            })
+            .then(response => (response.json()))
+            .then(data => {
+              if(data.success) {
+                document.getElementById('addPlan').innerHTML= "Your event: " + plan + " has been added to your calender!";
+                loadCalendar();
+              } else {
+                document.getElementById('addPlan').innerHTML = (data.success ? "Your event has been added!" : `Your event was not added. ${data.message}`);
+              }
+            })
+          }
+          function viewDay(number,month,events) {
+            const numDay = number.substring(7);
+            let bigMessage = "";
+            for (let i=0; i<events.length; i++){
+              let check = 0;
+              if(numDay==events[i].day&&month==events[i].month) {
+                const message = events[i].title + " at " + events[i].hour + ":" + events[i].minute+ "\n";
+                bigMessage+=message;
+              }
+            }
+            alert(bigMessage)
+          }
+          //Creative portion that allows a user to view more details about an event in an alert
+          function viewEvent(number,events) {
+            e = findById(number.substring(4),events)
+            alert(e.title + " at " + e.hour + ":" + e.minute);
+          }
+          //deletes event and refreshes calendar w/o event
+          function deleteEvent(number,events) {
+            let e = findById(number.substring(6),events);
+            const plan = e.title;
+            const id = e.id;
+            const tokens = theToken;
+            const data = { 'id' : id, 'tokens': tokens};
+            fetch("deleteEvent.php", {
+              method: 'POST',
+              body: JSON.stringify(data),
+              headers: {'content-type': 'application/json'}
+            })
+            .then(response => (response.json()))
+            .then(data => {
+              if(data.success) {
+                document.getElementById('addPlan').innerHTML= "Your event: " + plan + " has been deleted from your calender.";
+                loadCalendar();
+              } else {
+                document.getElementById('addPlan').innerHTML = (data.success ? "Your event has been added!" : `Your event was not deleted. ${data.message}`);
+              }
+            })
+          }
+          //edit event populates addEvent fields with event to edit and deletes old event from database w/ calendar refresh
+          function editEvent(number,events) {
+            let e = findById(number.substring(4),events);
+            const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+            document.getElementById("pickDay").value = e.day;
+            document.getElementById("pickMon").value=months[e.month];
+            document.getElementById("pickYear").value=e.year;
+            document.getElementById("pickHour").value=e.hour;
+            document.getElementById("pickMin").value=e.minute;
+            document.getElementById("plan").value=e.title;
+            document.getElementById("pickCategory").value=e.category;
+            let newE = "delete"+number.substring(4);
+            deleteEvent(newE,events);
+          }
+          //determines which event it is by id of button pressed
+          function findById(num,events) {
+            for (let i=0; i<events.length; i++){
+              if(num==events[i].id) {
+                return events[i];
+              }
+            }
+          }
+      </script>
+  </body>
+</html>
